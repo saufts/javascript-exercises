@@ -9,7 +9,10 @@ const caesar = function(text, shiftFactor) {
         let shiftedCode = code + (shiftFactor % 26);
 
         if(isLetter(code)) {
-            charCodeArr.push(wrapAroundAlphabet(shiftedCode)); 
+            //charCodeArr.push(wrapAroundAlphabet(shiftedCode)); 
+            if(code >= 97 && code <= 122) charCodeArr.push(wrapLowerCase(shiftedCode));
+            else if(code >= 65 && code <= 90) charCodeArr.push(wrapUpperCase(shiftedCode));
+
         }
         else charCodeArr.push(text.charCodeAt(i));
    
@@ -26,17 +29,6 @@ const isLetter = function(val) {
     }
 }
 
-const wrapAroundAlphabet = function(val) {
-    if(val > 90 && val < 97 || val > 122) {
-        return val = val - 26;
-    }
-    else if(val < 65 || val < 97 && val > 90) {
-        return val = val + 26;
-    } else {
-        return val;
-    }
-}
-
 const wrapLowerCase = function(val) {
     if(val > 122) {
         return val -= 26;
@@ -45,11 +37,10 @@ const wrapLowerCase = function(val) {
     } else {
         return val;
     }
-
 }
 
 const wrapUpperCase = function(val) {
-    if(val > 90) {
+    if(val > 90 && val < 122) {
         return val -= 26;
     }
     else if (val < 65) {
@@ -57,7 +48,6 @@ const wrapUpperCase = function(val) {
     } else {
         return val;
     }
-
 }
 
 // Do not edit below this line

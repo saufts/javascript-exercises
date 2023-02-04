@@ -18,6 +18,6 @@ test('wraps', () => {
 test('works with large shift factors', () => {
   expect(caesar('Hello, World!', 75)).toBe('Ebiil, Tloia!');
 });
-test.skip('works with large negative shift factors', () => {
+test('works with large negative shift factors', () => {
   expect(caesar('Hello, World!', -29)).toBe('Ebiil, Tloia!');
 });
